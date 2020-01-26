@@ -1,23 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-   // Handler when the DOM is fully loaded
    console.log("Ready!")
-   // async function getEvents() {
-   //    let response = await fetch("https://api.meetup.com/code-and-coffee-long-beach/events?&sign=true&photo-host=public&page=20", {
-   //       mode: 'no-cors'
-   //    })
-   //    let events = await response.json()
-   //    return events
-   // }
+   const url = "https://practical-wilson-757230.netlify.com/index.json"
+   fetch(url)
+      .then(response => response.json())
+      .then(events => renderEvents(events))
 
-   // let events = getEvents()
 
-   let events
-   fetch("https://api.meetup.com/code-and-coffee-long-beach/events?&sign=true&photo-host=public&page=20", {
-      mode: "no-cors"
-   }).then(
-      response => {
-         // response.json()
-         console.log(response)
-      }
-   )
+   function renderEvents(events) {
+      let allEvents = events.slice(0, 2).map(e => {
+         return `<div class="events row"> ${e.local_time}</div>`
+      }).join("")
+      let eventDiv = document.getElementById("meetup-api")
+      eventDiv.innerHTML = allEvents
+   }
 });
