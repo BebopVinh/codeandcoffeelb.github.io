@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				const date = new Date(e.local_time)
 				const month = months[date.getMonth()]
 				return /*html*/ `
-				<div class="card" >
-					<h4 class="card-header">
-						${month} ${date.getDate()}
+				<div class="card" style="max-width: 540px">
+					<h4 class="card-header mx-auto bg-warning" style="max-width: 100%">
+						<p >${month} ${date.getDate()}</p>
 					</h4>
 					<div class="card-body">
 						<h4 class="card-title">${e.venue_name}</h4>
