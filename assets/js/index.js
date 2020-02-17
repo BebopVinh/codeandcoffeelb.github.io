@@ -26,24 +26,19 @@ document.addEventListener("DOMContentLoaded", function() {
 				const date = new Date(e.local_time)
 				const month = months[date.getMonth()]
 				return /*html*/ `
-				<div class="card mb-3" style="max-width: 540px;">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<p class="">${month}</p>
-							<p class="">${date.getDate()}</p>	
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							</div>
-						</div>
+				<div class="card" >
+					<h4 class="card-header">
+						${month} ${date.getDate()}
+					</h4>
+					<div class="card-body">
+						<h4 class="card-title">${e.venue_name}</h4>
+						<h5 class="card-subtitle mb-2 text-muted">${e.venue_address1}</h5>
+						<a class="card-link" href="#">${e.event_url}</a>
 					</div>
 				</div>`
 			})
 			.join("")
-		let eventDiv = document.querySelector("div.meetup-api")
+		let eventDiv = document.querySelector("div.card-deck")
 		eventDiv.innerHTML = allEvents
 	}
 })
